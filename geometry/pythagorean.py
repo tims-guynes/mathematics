@@ -1,3 +1,5 @@
+import time
+
 def pythagorean():
     value_message = """What sides do you have to calculate?
                 1: sides a and b
@@ -16,36 +18,38 @@ def pythagorean():
             b = float(input(side_b))
             calc = (a**2 + b**2)**0.5
             print(calc)
-            repeat()
+            
             
         case "2": #side a and c
             a = float(input(side_a))
             c = float(input(side_c))
             calc = (c**2 - a**2)**0.5
-            return calc
+            print(calc)
     
         case "3": #side b and c
             b = float(input(side_b))
             c = float(input(side_c))
             calc = (c**2 - b**2)**0.5
-            return calc
+            print(calc)
         case _:
             print("Please select a valid response.")
             side_value = input(value_message)
-            
+
+    time.sleep(1)        
+    repeat()    
 
 
 def repeat():
     message = """Want to calculate another right triangle? 
                 Yes (y) or No (n)?
                 : """
-    repeat_input = input(message).lower
+    repeat_input = input(message).lower()
 
-    match repeat_input:
-        case "y" | "yes":
+    match repeat_input[0]:
+        case "y":
             print("Excellent")
             pythagorean()
-        case "n" | "no":
+        case "n":
             print("Thank you for using my calculator, goodbye")
             return
         case _:
@@ -53,6 +57,6 @@ def repeat():
             repeat()
             pass
 
-        
+    
     print()
 pythagorean()
